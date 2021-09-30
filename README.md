@@ -1,6 +1,10 @@
 # Wild.JoinLeaveMessages
 Unturned plugin to add join and leave messages through the OpenMod API
 
+## How to Install
+Make sure you are in-game and run this command:
+`/openmod install Wild.JoinLeaveMessages`
+
 ## Documentation
 *Config.yaml*
 ```yaml
