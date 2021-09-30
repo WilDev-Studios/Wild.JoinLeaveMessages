@@ -1,4 +1,4 @@
-name: Deploy to NuGet and Release on GitHub
+name: Deploy to NuGet
 
 on:
   workflow_dispatch:
