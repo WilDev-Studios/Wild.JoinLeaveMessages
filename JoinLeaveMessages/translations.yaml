@@ -1,0 +1,3 @@
+Messages:
+  Join_Message: "{Player} connected to the server" # Must be a string value - Useable Parameters: {Player}, Rich Text <>
+  Leave_Message: "{Player} disconnected from the server" # Must be a string value - Useable Parameters: {Player}, Rich Text <>
