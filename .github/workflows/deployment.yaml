@@ -7,7 +7,6 @@ on:
         description: 'Plugin Version (SemVer: https://semver.org)'
         required: true
       update_notes:
-        default: "-"
         description: "Update notes"
         required: true
 jobs:
