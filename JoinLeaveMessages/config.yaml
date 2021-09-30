@@ -1,0 +1,3 @@
+Values:
+  Join_Enabled: true # If join messages should be enabled - Must be a boolean value
+  Leave_Enabled: true # If leave messages should be enabled - Must be a boolean value
