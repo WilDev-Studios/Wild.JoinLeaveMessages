@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using OpenMod.API.Users;
 using OpenMod.Unturned.Players.Connections.Events;
 
-[assembly: PluginMetadata("Wild.JoinLeaveMessages", DisplayName = "Wild.JoinLeaveMessages", Author = "WilDev Studios")]
+[assembly: PluginMetadata("Wild.JoinLeaveMessages", DisplayName = "Wild.JoinLeaveMessages", Author = "WilDev Studios", Website = "https://wildev-studios.github.io")]
 namespace JoinLeaveMessages
 {
     public class JoinLeaveMessages : OpenModUnturnedPlugin
