@@ -9,8 +9,11 @@ using OpenMod.API.Eventing;
 using System.Threading.Tasks;
 using OpenMod.API.Users;
 using OpenMod.Unturned.Players.Connections.Events;
+using OpenMod.Core.Users.Events;
+using OpenMod.Core.Eventing;
+using System.Collections.Generic;
 
-[assembly: PluginMetadata("Wild.JoinLeaveMessages", DisplayName = "Wild.JoinLeaveMessages", Author = "WilDev Studios", Website = "https://wildev-studios.github.io")]
+[assembly: PluginMetadata("Wild.JoinLeaveMessages", DisplayName = "Wild.JoinLeaveMessages", Author = "WilDev Studios", Website = "https://discord.gg/4Ggybyy87d")]
 namespace JoinLeaveMessages
 {
     public class JoinLeaveMessages : OpenModUnturnedPlugin
@@ -33,7 +36,6 @@ namespace JoinLeaveMessages
             m_Logger.LogInformation("| WILD.JOINLEAVEMESSAGES plugin has been loaded!           |");
             m_Logger.LogInformation("| Made with <3 by WildKadeGaming @ WilDev Studios          |");
             m_Logger.LogInformation("| WilDev Discord: https://discord.com/invite/4Ggybyy87d    |");
-            m_Logger.LogInformation("| WilDev Studios Website: https://wildev-studios.github.io |");
             m_Logger.LogInformation("+==========================================================+");
             return UniTask.CompletedTask;
         }
@@ -44,9 +46,40 @@ namespace JoinLeaveMessages
             m_Logger.LogInformation("| WILD.JOINLEAVEMESSAGES plugin has been unloaded!         |");
             m_Logger.LogInformation("| Made with <3 by WildKadeGaming @ WilDev Studios          |");
             m_Logger.LogInformation("| WilDev Discord: https://discord.com/invite/4Ggybyy87d    |");
-            m_Logger.LogInformation("| WilDev Studios Website: https://wildev-studios.github.io |");
             m_Logger.LogInformation("+==========================================================+");
             return UniTask.CompletedTask;
+        }
+    }
+
+    public class UserFirstConnectionHandler : IEventListener<IUserFirstConnectingEvent>
+    {
+        private readonly IConfiguration m_Configuration;
+        private readonly IUserManager m_UserManager;
+        private readonly IStringLocalizer m_StringLocalizer;
+
+        public static List<string> ConnectingMembers = new List<string>();
+
+        public UserFirstConnectionHandler(
+            IConfiguration configuration,
+            IUserManager userManager,
+            IStringLocalizer stringLocalizer)
+        {
+            m_Configuration = configuration;
+            m_UserManager = userManager;
+            m_StringLocalizer = stringLocalizer;
+        }
+
+        [EventListener(Priority = EventListenerPriority.Lowest)]
+        public async Task HandleEventAsync(object sender, IUserFirstConnectingEvent @event)
+        {
+            var user = @event.User.DisplayName;
+            var first_join_enabled = m_Configuration.GetSection("Values:First-Join-Enabled").Get<bool>();
+
+            if (first_join_enabled == true)
+            {
+                ConnectingMembers.Add(user);
+                await m_UserManager.BroadcastAsync(m_StringLocalizer["Messages:First-Join-Message", new { Player = user }]);
+            }
         }
     }
 
@@ -66,14 +99,30 @@ namespace JoinLeaveMessages
             m_StringLocalizer = stringLocalizer;
         }
 
+        [EventListener(Priority = EventListenerPriority.Low)]
         public async Task HandleEventAsync(object sender, UnturnedPlayerConnectedEvent @event)
         {
             var user = @event.Player;
-            var join_enabled = m_Configuration.GetSection("Values:Join_Enabled").Get<bool>();
+            var stringUser = user.ToString();
+            var join_enabled = m_Configuration.GetSection("Values:Join-Enabled").Get<bool>();
+            var first_join_enabled = m_Configuration.GetSection("Values:First-Join-Enabled").Get<bool>();
+
+            if (first_join_enabled == true)
+            {
+                for (int i = 0; i < UserFirstConnectionHandler.ConnectingMembers.Count; i++)
+                {
+                    if (UserFirstConnectionHandler.ConnectingMembers[i] == stringUser)
+                    {
+                        await m_UserManager.BroadcastAsync(m_StringLocalizer["Messages:First-Join-Message", new { Player = user }]);
+                        UserFirstConnectionHandler.ConnectingMembers.Remove(stringUser);
+                        return;
+                    }
+                }
+            }
 
             if (join_enabled == true)
             {
-                await m_UserManager.BroadcastAsync(m_StringLocalizer["Messages:Join_Message", new { Player = user }]);
+                await m_UserManager.BroadcastAsync(m_StringLocalizer["Messages:Join-Message", new { Player = user }]);
             }
         }
     }
@@ -94,14 +143,15 @@ namespace JoinLeaveMessages
             m_StringLocalizer = stringLocalizer;
         }
 
+        [EventListener(Priority = EventListenerPriority.Low)]
         public async Task HandleEventAsync(object sender, UnturnedPlayerDisconnectedEvent @event)
         {
             var user = @event.Player;
-            var leave_enabled = m_Configuration.GetSection("Values:Leave_Enabled").Get<bool>();
+            var leave_enabled = m_Configuration.GetSection("Values:Leave-Enabled").Get<bool>();
 
             if (leave_enabled == true)
             {
-                await m_UserManager.BroadcastAsync(m_StringLocalizer["Messages:Leave_Message", new { Player = user }]);
+                await m_UserManager.BroadcastAsync(m_StringLocalizer["Messages:Leave-Message", new { Player = user }]);
             }
         }
     }
