@@ -9,14 +9,16 @@ Make sure you are in-game and run this command:
 *Config.yaml*
 ```yaml
 Values:
-  Join_Enabled: true # If join messages should be enabled - Must be a boolean value
-  Leave_Enabled: true # If leave messages should be enabled - Must be a boolean value
+  Join-Enabled: true # If join messages should be enabled - Must be a boolean value
+  Leave-Enabled: true # If leave messages should be enabled - Must be a boolean value
+  First-Join-Enabled: true # If first join messages should be enabled - Must be a boolean value
 ```
 *Translations.yaml*
 ```yaml
 Messages:
-  Join_Message: "{Player} connected to the server" # Must be a string value - Useable Parameters: {Player}, Rich Text <>
-  Leave_Message: "{Player} disconnected from the server" # Must be a string value - Useable Parameters: {Player}, Rich Text <>
+  Join-Message: "{Player} connected to the server" # Must be a string value - Useable Parameters: {Player}, Rich Text <>
+  Leave-Message: "{Player} disconnected from the server" # Must be a string value - Useable Parameters: {Player}, Rich Text <>
+  First-Join-Message: "Everybody welcome {Player}, they just connected for the first time" # Must be a string value - Useable Parameters: {Player}, Rich Text <>
 ```
 *Parameters*
 - {Player}: Inserted in place as the players name
@@ -24,4 +26,3 @@ Messages:
 
 ## Contact Us
 ### [Discord](https://discord.gg/4Ggybyy87d)
-### [Website](https://wildev-studios.github.io)
