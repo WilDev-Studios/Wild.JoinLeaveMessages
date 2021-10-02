@@ -1,3 +1,4 @@
 Messages:
-  Join_Message: "{Player} connected to the server" # Must be a string value - Useable Parameters: {Player}, Rich Text <>
-  Leave_Message: "{Player} disconnected from the server" # Must be a string value - Useable Parameters: {Player}, Rich Text <>
+  Join-Message: "{Player} connected to the server" # Must be a string value - Useable Parameters: {Player}, Rich Text <>
+  Leave-Message: "{Player} disconnected from the server" # Must be a string value - Useable Parameters: {Player}, Rich Text <>
+  First-Join-Message: "Everybody welcome {Player}, they just connected for the first time" # Must be a string value - Useable Parameters: {Player}, Rich Text <>
