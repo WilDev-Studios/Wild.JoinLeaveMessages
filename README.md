@@ -22,7 +22,10 @@ Messages:
 ```
 *Parameters*
 - {Player}: Inserted in place as the players name
-- Rich Text <>: To add color and text formatting support for in-game text - Must be configured with <> 
+- Rich Text <>: To add color and text formatting support for in-game text - Must be configured with <>
+
+## Planned Additions
+- Image URL options so you can add different images for joining and leaving
 
 ## Contact Us
 ### [Discord](https://discord.gg/4Ggybyy87d)
