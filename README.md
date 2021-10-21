@@ -10,8 +10,13 @@ Make sure you are in-game and run this command:
 ```yaml
 Values:
   Join-Enabled: true # If join messages should be enabled - Must be a boolean value
+  Join-Image-URL: example.join.message.com/image_join.png # Image that the join message will use - Must be a string value without double-quotes
+
   Leave-Enabled: true # If leave messages should be enabled - Must be a boolean value
+  Leave-Image-URL: example.leave.message.com/image_leave.png # Image that the leave message will use - Must be a string value without double-quotes
+  
   First-Join-Enabled: true # If first join messages should be enabled - Must be a boolean value
+  First-Join-Image-URL: example.first-join.message.com/image_first-join.png # Image that the first join message will use - Must be a string value without double-quotes
 ```
 *Translations.yaml*
 ```yaml
@@ -23,9 +28,6 @@ Messages:
 *Parameters*
 - {Player}: Inserted in place as the players name
 - Rich Text <>: To add color and text formatting support for in-game text - Must be configured with <>
-
-## Planned Additions
-- Image URL options so you can add different images for joining and leaving
 
 ## Contact Us
 ### [Discord](https://discord.gg/4Ggybyy87d)
