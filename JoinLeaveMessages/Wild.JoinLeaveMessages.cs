@@ -56,7 +56,7 @@ namespace JoinLeaveMessages
         private readonly IConfiguration m_Configuration;
         private readonly IStringLocalizer m_StringLocalizer;
 
-        public static List<string> ConnectingMembers = new List<string>();
+        public static List<string> ConnectingMembers = new();
 
         public UserFirstConnectionHandler(
             IConfiguration configuration,
