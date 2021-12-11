@@ -25,7 +25,7 @@ Messages:
   Leave-Message: "{Player} disconnected from the server" # Must be a string value - Useable Parameters: {Player}, Rich Text <>
   First-Join-Message: "Everybody welcome {Player}, they just connected for the first time" # Must be a string value - Useable Parameters: {Player}, Rich Text <>
 ```
-*Parameters*
+*Parameters
 - {Player}: Inserted in place as the players name
 - Rich Text <>: To add color and text formatting support for in-game text - Must be configured with <>
 
