@@ -13,7 +13,7 @@ using OpenMod.Core.Eventing;
 using System.Collections.Generic;
 using SDG.Unturned;
 
-[assembly: PluginMetadata("Wild.JoinLeaveMessages", DisplayName = "Wild.JoinLeaveMessages", Author = "WilDev Studios", Website = "https://discord.gg/4Ggybyy87d")]
+[assembly: PluginMetadata("Wild.JoinLeaveMessages", DisplayName = "Wild.JoinLeaveMessages", Author = "WilDev Studios", Website = "https://discord.gg/4Ggybyy87d", Description = "Unturned plugin to add join and leave messages through the OpenMod API")]
 namespace JoinLeaveMessages
 {
     public class JoinLeaveMessages : OpenModUnturnedPlugin
