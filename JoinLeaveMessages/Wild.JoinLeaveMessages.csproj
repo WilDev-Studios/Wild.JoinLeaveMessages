@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <PackageId>Wild.JoinLeaveMessages</PackageId>
+	  <AssemblyName>JoinLeaveMessages</AssemblyName>
     <PackageDescription>Unturned plugin to add join and leave messages through the OpenMod API</PackageDescription>
     <PackageAuthor>WilDev Studios</PackageAuthor>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -17,9 +18,9 @@
     <WarningsAsErrors>nullable</WarningsAsErrors>
     <NoWarn>$(NoWarn);NU1701;NU1702;CS0436</NoWarn>
     <LangVersion>9.0</LangVersion>
-    <Version>1.2.2</Version>
-    <InformationalVersion>1.2.2</InformationalVersion>
-    <PackageVersion>1.2.2</PackageVersion>
+    <Version>1.2.3</Version>
+    <InformationalVersion>1.2.3</InformationalVersion>
+    <PackageVersion>1.2.3</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
