@@ -27,7 +27,7 @@ Messages:
 ```
 *Parameters*
 - {Player}: Inserted in place as the players name
-- Rich Text <>: To add color and text formatting support for in-game text - Must be configured with <>
+- Rich Text <>: To add color and text formatting support for in-game text - Must be configured with <
 
 ## Contact Us
 ### [Discord](https://discord.gg/4Ggybyy87d)
