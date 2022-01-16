@@ -117,7 +117,7 @@ namespace JoinLeaveMessages
 
             if (join_enabled == true)
             {
-                ChatManager.serverSendMessage(m_StringLocalizer["Messages:Join-Message", new { Player = user }], UnityEngine.Color.green, null, null, EChatMode.GLOBAL, m_Configuration.GetSection("Join-Image-URL").Get<string>(), true);
+                ChatManager.serverSendMessage(m_StringLocalizer["Messages:Join-Message", new { Player = user.SteamPlayer.playerID.playerName }], UnityEngine.Color.green, null, null, EChatMode.GLOBAL, m_Configuration.GetSection("Join-Image-URL").Get<string>(), true);
             }
 
             return Task.CompletedTask;
@@ -145,7 +145,7 @@ namespace JoinLeaveMessages
 
             if (leave_enabled == true)
             {
-                ChatManager.serverSendMessage(m_StringLocalizer["Messages:Leave-Message", new { Player = user }], UnityEngine.Color.green, null, null, EChatMode.GLOBAL, m_Configuration.GetSection("Leave-Image-URL").Get<string>(), true);
+                ChatManager.serverSendMessage(m_StringLocalizer["Messages:Leave-Message", new { Player = user.SteamPlayer.playerID.playerName }], UnityEngine.Color.green, null, null, EChatMode.GLOBAL, m_Configuration.GetSection("Leave-Image-URL").Get<string>(), true);
             }
 
             return Task.CompletedTask;
